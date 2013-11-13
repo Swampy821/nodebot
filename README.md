@@ -5,4 +5,4 @@
 	| |   | |_| | |_) | |_| |_| | \ \| |____ 
 	|_|    \__,_|_.__/|_|_____|_|  \_\\_____|
 
-Free, open, public PHP IRC bot system.
+Free, open, public Node IRC bot system.
