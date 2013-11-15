@@ -65,3 +65,8 @@ bot.addListener("action", function (from, to, message) {
       }
     }
 })
+
+//LOAD CURRENT NICKS INTO CONFIG EVENT HANDLER
+bot.addListener("names", function (channel, nicks) { 
+  config.nicks = nicks;
+})

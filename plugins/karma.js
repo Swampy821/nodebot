@@ -8,6 +8,11 @@ exports.message = function(from, to, text, message, bot, config){
 	var user_name = message_string[0].substr(0,message_string[0].length-2);
 	if((message_string[0].substr(message_string[0].length-2,2)=='++' || message_string[0].substr(message_string[0].length-2,2)=='--') && user_name!=from)
 	{
+		if(config.nicks[user_name]==null)
+		{
+			bot.say(config.channels[0],"I don't know of any "+user_name+"s.");
+			return false;
+		}
 		if(message_string[0].substr(message_string[0].length-2,2)=='--')
 		{
 			var min=true;
