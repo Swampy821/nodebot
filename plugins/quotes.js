@@ -20,10 +20,12 @@ exports.message = function(from, to, text, message, bot, config) {
 						bot.say(to, row.messageType);
 						break;
 				}
-			});
-			db.each("Select * from fullQuote Where quoteNumber=?",[message_string[1]], function(err, row) {
+			},function(){
+				db.each("Select * from fullQuote Where quoteNumber=?",[message_string[1]], function(err, row) {
 				bot.say(to, "Added by " + row.user_name + " in " + row.channel + " on " + row.timestamp);
+				});
 			});
+			
 			break;
 		case '!addquote':
 			var text = text.replace("!addquote", "");
