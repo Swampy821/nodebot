@@ -16,3 +16,4 @@ exports.karma = true;
 
 exports.hookers = true;
 
+exports.quotes = true;

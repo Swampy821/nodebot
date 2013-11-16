@@ -1,4 +1,5 @@
 var config = require("./config.js");
+require('./migrate.js'); //Autorun Migrate.
 var irc = require("irc");
 var cash = require('./plugins/cash.js');
 var fs = require('fs');
