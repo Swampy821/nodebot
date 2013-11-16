@@ -76,4 +76,31 @@ exports.balance = function(user, callback)
 	});
 }
 
+exports.accruedInterest = function(config)
+{
+	console.log('ACCRUING INTEREST');
+	var sql = "SELECT rowid, cash FROM cash";
+	var cash = Array();
+	var new_cash;
+	var update_sql = 'UPDATE cash SET `cash` = CASE ';
+	var update_bind = Array();
+	var row_ids = Array();
+	db.each(sql,function(err,rows){
+		cash.push({cash:rows.cash, id: rows.rowid, interest:0});
+	},function(){
 
+		for(var i=0;i<cash.length;i++)
+		{
+			new_cash = cash[i].cash*config.interest_rate;
+			cash[i].cash+=new_cash;
+			update_sql += ' WHEN `rowid`=? THEN ? ';
+			update_bind.push(cash[i].id);
+			update_bind.push(cash[i].cash);
+			row_ids.push(cash[i].id);
+		}
+		update_sql += ' END WHERE `rowid` IN (';
+		update_sql += row_ids.join(', ');
+		update_sql += ')';
+		db.run(update_sql,update_bind);
+	})
+}

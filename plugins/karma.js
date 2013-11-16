@@ -4,6 +4,7 @@ var db = new sqlite3.Database('database/database.db');
 
 //MESSAGE EVENT
 exports.message = function(from, to, text, message, bot, config){
+	if(config.karma==false){return false;} //Check Config
 	var message_string = text.split(' ');
 	var user_name = message_string[0].substr(0,message_string[0].length-2);
 	if((message_string[0].substr(message_string[0].length-2,2)=='++' || message_string[0].substr(message_string[0].length-2,2)=='--') && user_name!=from)
@@ -60,21 +61,21 @@ exports.message = function(from, to, text, message, bot, config){
 
 //JOIN EVENT
 exports.join = function(channel, nick, message, bot, config){
-	
+	if(config.karma==false){return false;} //Check Config
 }
 
 //PART EVENT
 exports.part = function(channel, nick, message, bot, config){
-	
+	if(config.karma==false){return false;} //Check Config
 }
 
 //PART EVENT
 exports.raw = function(message, bot, config){
-
+	if(config.karma==false){return false;} //Check Config
 }
 
 //ACTION EVENT
 exports.action = function(from, to, message, bot, config){
-	
+	if(config.karma==false){return false;} //Check Config
 
 }
