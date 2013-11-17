@@ -25,7 +25,10 @@ exports.add = function(user, amount, callback)
 			bind = [cash,user];
 			db.run(sql,bind);
 		}
-		callback(cash);
+		if(callback != undefined)
+		{
+			callback(cash);
+		}
 	});
 }
 
@@ -56,7 +59,11 @@ exports.remove = function(user, amount, callback)
 			bind = [cash,user];
 			db.run(sql,bind);
 		}
-		callback(cash);
+		if(callback != undefined)
+		{
+			callback(cash);
+		}
+		
 	});
 }
 
@@ -72,8 +79,11 @@ exports.balance = function(user, callback)
 		exists=true;
 	},
 	function(){
-		callback(cash);
-	});
+		if(callback != undefined)
+		{
+			callback(cash);
+		}
+	});e
 }
 
 exports.accruedInterest = function(config)
