@@ -30,13 +30,13 @@ function getRandomInt (min, max) {
 exports.action = function(from, to, message, bot, config){
 	if(config.hookers==false){return false;} //CHECK SETTINGS
 	var message_string = message.split(' ');
-
 	//STEALS
 	if(message_string[0].toLowerCase()=='steals' && message_string[3].toLowerCase()==config.botName.toLowerCase())
 	{
 		var amount = message_string[1];
 			amount = amount.substr(1,amount.length);
 			amount = parseInt(amount);
+		console.log(amount);
 		if(amount>50)
 		{
 			bot.action(config.channels[0],"doesn't have that kind of money.");

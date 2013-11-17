@@ -441,7 +441,7 @@ function finish_dealer_to_player(bot, config, callback)
 	game.dealer_hand.drawCard(game_card);
 	setTimeout(function(){
 		bot.action(config.channels[0],'deals herself '+game_card.show_val+' of '+game_card.suit+'.');
-		if(game.dealer_hand.total()<game.player_hand.total())
+		if(game.dealer_hand.total()<=16)
 		{
 			finish_dealer_to_player(bot,config, callback);
 		}else{

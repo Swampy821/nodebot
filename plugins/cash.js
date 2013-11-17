@@ -83,7 +83,7 @@ exports.balance = function(user, callback)
 		{
 			callback(cash);
 		}
-	});e
+	});
 }
 
 exports.accruedInterest = function(config)
